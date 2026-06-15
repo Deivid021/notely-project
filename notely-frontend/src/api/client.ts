@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { AuthResponse } from './auth';
 import { getAccessToken, getRefreshToken, setAccessToken, setRefreshToken } from './tokenStore';
 
 export const api = axios.create({
@@ -52,7 +53,7 @@ api.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      const { data } = await axios.post(
+      const { data } = await axios.post<AuthResponse>(
         `${import.meta.env.VITE_API_URL ?? 'http://localhost:8080'}/auth/refresh`,
         { refreshToken },
       );

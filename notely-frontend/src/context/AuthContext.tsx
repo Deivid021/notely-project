@@ -53,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   async function logout() {
-    await authApi.logout();
+    await authApi.logout().catch(() => {});
     setAccessToken(null);
     setRefreshToken(null);
     setIsAuthenticated(false);

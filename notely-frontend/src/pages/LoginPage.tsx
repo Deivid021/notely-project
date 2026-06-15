@@ -26,9 +26,14 @@ export default function LoginPage() {
       }
     } catch (err: unknown) {
       const status = (err as { response?: { status?: number } })?.response?.status;
-      if (status === 401 || status === 400) setError('Email ou senha inválidos.');
-      else if (status === 409) setError('Este email já está cadastrado.');
-      else setError('Algo deu errado. Tente novamente.');
+      if (tab === 'login') {
+        if (status === 401 || status === 400) setError('Email ou senha inválidos.');
+        else setError('Algo deu errado. Tente novamente.');
+      } else {
+        if (status === 409) setError('Este email já está cadastrado.');
+        else if (status === 400) setError('Dados inválidos. Verifique o email e a senha.');
+        else setError('Algo deu errado. Tente novamente.');
+      }
     } finally {
       setIsSubmitting(false);
     }
