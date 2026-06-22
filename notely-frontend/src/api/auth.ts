@@ -20,7 +20,7 @@ export async function login(email: string, password: string): Promise<AuthRespon
 export async function refresh(refreshToken: string): Promise<AuthResponse> {
   // Use plain axios to avoid the interceptor triggering on this request
   const { data } = await axios.post<AuthResponse>(
-    `${import.meta.env.VITE_API_URL ?? 'http://localhost:8080'}/auth/refresh`,
+    `${import.meta.env.VITE_API_URL || ''}/auth/refresh`,
     { refreshToken },
   );
   return data;
