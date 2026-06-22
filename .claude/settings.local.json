@@ -19,7 +19,10 @@
       "Bash(npx playwright *)",
       "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:5173/auth/login -X POST -H 'Content-Type: application/json' -d '{\"email\":\"x@x.com\",\"password\":\"wrongpass\"}')",
       "Bash(node verify-notely.mjs)",
-      "Bash(pkill -f \"vite\")"
+      "Bash(pkill -f \"vite\")",
+      "Bash(git -C /home/deividsestrensantos/notely-project status)",
+      "Bash(rm -rf /home/deividsestrensantos/notely-project/CSharp-Backend/.git)",
+      "Bash(git -C /home/deividsestrensantos/notely-project status --short)"
     ],
     "defaultMode": "bypassPermissions"
   }
